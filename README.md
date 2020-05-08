@@ -1,4 +1,5 @@
 
+[![Build Status](https://dev.azure.com/ganeshj0569/Sandesh2026/_apis/build/status/sandesh2026.mslearn-tailspin-spacegame-web?branchName=master)](https://dev.azure.com/ganeshj0569/Sandesh2026/_build/latest?definitionId=2&branchName=master)
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
