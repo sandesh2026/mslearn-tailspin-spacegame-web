@@ -45,15 +45,17 @@ steps:
 - template: templates/build.yml
   parameters:
     buildConfiguration: 'Release'
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  condition: succeeded()
-- task: NuGetAuthenticate@0
-  displayName: 'NuGet Authenticate'
 - task: NuGetCommand@2
-  displayName: 'NuGet push'
+  displayName: 'nuget push'
   inputs:
-    command: push
-    publishVstsFeed: 'Sandesh2026/azure-artifacts'
+    command: 'push'
+    feedsToUse: 'select'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'azure-artifacts'
+    versioningScheme: 'off'
     allowPackageConflicts: true
+
+#- task: PublishBuildArtifacts@1
+ # displayName: 'Publish Artifact: drop'
+  #condition: succeeded()
