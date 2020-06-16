@@ -68,7 +68,7 @@ steps:
   inputs:
     command: 'push'
     #feedsToUse: 'select'
-    packagesToPush: '$(Pipeline.Workspace)/**/drop/*.nupkg'
+    packagesToPush: '/home/vsts/work/1/a/Tailspin.SpaceGame.Web.1.0.0.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'azure-artifactory'
     versioningScheme: 'off'
