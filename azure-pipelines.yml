@@ -62,7 +62,7 @@ steps:
   inputs:
     command: 'push'
     #feedsToUse: 'select'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/$(buildConfiguration)/*.nupkg'
+    packagesToPush: '$(Pipeline.Workspace)/**/drop/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'azure-artifactory'
     versioningScheme: 'off'
