@@ -49,7 +49,7 @@ steps:
   displayName: 'nuget push'
   inputs:
     command: 'push'
-    feedsToUse: 'select'
+    #feedsToUse: 'select'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'azure-artifacts'
