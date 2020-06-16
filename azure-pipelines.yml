@@ -49,7 +49,6 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()
-  steps:
 - task: NuGetAuthenticate@0
   displayName: 'NuGet Authenticate'
 - task: NuGetCommand@2
