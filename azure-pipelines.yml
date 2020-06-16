@@ -46,12 +46,6 @@ steps:
     projects: '**/*.csproj'
     
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet pack $(buildConfiguration)'
-  inputs:
-    command: pack
-
-
-- task: DotNetCoreCLI@2
   displayName: 'Publish the project - $(buildConfiguration)'
   inputs:
     command: 'publish'
@@ -59,6 +53,12 @@ steps:
     publishWebProjects: false
     arguments: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
     zipAfterPublish: true
+    
+- task: NuGetCommand@2
+  displayName: 'Pack nuget'
+  inputs:
+    command: pack
+    packagesToPack: '**/*.csproj'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
