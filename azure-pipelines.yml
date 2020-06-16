@@ -44,6 +44,12 @@ steps:
     command: 'build'
     arguments: '--no-restore --configuration $(buildConfiguration)'
     projects: '**/*.csproj'
+    
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack $(buildConfiguration)'
+  inputs:
+    command: pack
+
 
 - task: DotNetCoreCLI@2
   displayName: 'Publish the project - $(buildConfiguration)'
