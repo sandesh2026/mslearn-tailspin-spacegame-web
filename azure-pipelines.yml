@@ -70,6 +70,6 @@ steps:
     #feedsToUse: 'select'
     packagesToPush: '/home/vsts/work/1/a/Tailspin.SpaceGame.Web.1.0.0.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: 'azure-artifacts'
+    publishVstsFeed: 'Sandesh2026/azure-artifacts'
     versioningScheme: 'off'
     allowPackageConflicts: true
