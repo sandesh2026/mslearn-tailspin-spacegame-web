@@ -73,35 +73,18 @@ jobs:
     condition: succeeded()
   - task: NuGetCommand@2
     displayName: 'nuget push'
-    inputs:
-      command: 'push'
-    #feedsToUse: 'select'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
-      nuGetFeedType: 'internal'
-      publishVstsFeed: 'Sandesh2026/local-artifacts'
-    #versioningScheme: 'on'
-      versioningScheme: byPrereleaseNumber
-      majorVersion: '$(Major)'
-      minorVersion: '$(Minor)'
-      patchVersion: '$(Patch)'
-      allowPackageConflicts: true
-
-- deployment: WindowsDeploy
-  dependsOn: Windows
-  displayName: db
-  environment:
-    name: Windows
-    resourceType: VirtualMachine
-    tags: kanthesh
-  strategy:
-   runOnce:
-    deploy:
-     steps:
-     - task: NuGetCommand@2
-       displayName: 'Push NuGet Package'
-       inputs:
-         command: 'push'
-         packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
-         nuGetFeedType: 'external'
-             #publishFeedCredentials: 'NuGet'
- #NANU
+    environment:
+      name: Windows
+      resourceType: VirtualMachine
+      tags: kanthesh
+    strategy:
+    runOnce:
+      deploy:
+      steps:
+      - task: NuGetCommand@2
+        displayName: 'Push NuGet Package'
+        inputs:
+          command: 'push'
+          packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+          nuGetFeedType: 'external'
+ 
