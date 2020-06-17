@@ -5,7 +5,7 @@ pool:
   name: My_agent_pool
   demands:
     - npm
-    - Agent.Name -equals sandesh_laptop
+    - Agent.Name -equals DESKTOP-5INLDKO
 #  vmImage: 'ubuntu-16.04'
 #  demands:
 #    - npm
@@ -14,6 +14,9 @@ variables:
   buildConfiguration: 'Release'
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
   dotnetSdkVersion: '3.1.100'
+  Major: '1'
+  Minor: '0'
+  Patch: '1'
 
 steps:
 - task: UseDotNet@2
@@ -75,6 +78,27 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'Sandesh2026/local-artifacts'
-    versioningScheme: 'off'
+    #versioningScheme: 'on'
+    versioningScheme: byPrereleaseNumber
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'
     allowPackageConflicts: true
+- deployment: WindowsDeploy
+  displayName: db
+  environment:
+    name: Windows
+    resourceType: VirtualMachine
+    tags: kanthesh
+    strategy:
+     runOnce:
+       deploy:
+         steps:
+         - task: NuGetCommand@2
+           displayName: 'Push NuGet Package'
+           inputs:
+             command: 'push'
+             packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+             nuGetFeedType: 'external'
+             #publishFeedCredentials: 'NuGet'
  #NANU
