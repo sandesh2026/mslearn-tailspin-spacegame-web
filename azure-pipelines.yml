@@ -72,7 +72,7 @@ steps:
   inputs:
     command: 'push'
     #feedsToUse: 'select'
-    packagesToPush: '/home/vsts/work/1/a/Tailspin.SpaceGame.Web.1.0.0.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'Sandesh2026/azure-artifacts'
     versioningScheme: 'off'
