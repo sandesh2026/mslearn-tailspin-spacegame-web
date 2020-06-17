@@ -5,7 +5,7 @@ pool:
   name: My_agent_pool
   demands:
     - npm
-    - Agent.Name -equals winlocal
+    - Agent.Name -equals sandesh_laptop
 #  vmImage: 'ubuntu-16.04'
 #  demands:
 #    - npm
