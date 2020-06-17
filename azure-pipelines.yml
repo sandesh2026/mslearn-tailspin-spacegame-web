@@ -84,6 +84,7 @@ steps:
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'
     allowPackageConflicts: true
+jobs:
 - deployment: WindowsDeploy
   displayName: db
   environment:
