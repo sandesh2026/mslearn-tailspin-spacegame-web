@@ -58,10 +58,10 @@ steps:
     arguments: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
     zipAfterPublish: true
     
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2  #NuGetCommand
   displayName: 'Pack nuget'
   inputs:
-    command: pack
+    command: msbuild /t:pack
     packagesToPack: '**/*.csproj'
 
 - task: PublishBuildArtifacts@1
