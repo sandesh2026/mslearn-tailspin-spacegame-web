@@ -5,7 +5,7 @@ pool:
   name: My_agent_pool
   demands:
     - npm
-    - Agent.Name -equals sandesh_laptop
+    - Agent.Name -equals winlocal
 #  vmImage: 'ubuntu-16.04'
 #  demands:
 #    - npm
@@ -29,8 +29,8 @@ steps:
 - script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
   displayName: 'Compile Sass assets'
 
-- task: gulp@1
-  displayName: 'Run gulp tasks'
+#- task: gulp@1
+#  displayName: 'Run gulp tasks'
 
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
   displayName: 'Write build info'
