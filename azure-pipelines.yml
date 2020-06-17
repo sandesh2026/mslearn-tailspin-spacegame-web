@@ -87,6 +87,7 @@ jobs:
       allowPackageConflicts: true
 
 - deployment: WindowsDeploy
+  dependsOn: Windows
   displayName: db
   environment:
     name: Windows
