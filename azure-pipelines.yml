@@ -13,7 +13,7 @@ jobs:
    name: My_agent_pool
    demands:
    - npm
-   - Agent.Name -equals DESKTOP-5INLDKO
+   - Agent.Name -equals 'DESKTOP-5INLDKO'
 #  vmImage: 'ubuntu-16.04'
 #  demands:
 #    - npm
