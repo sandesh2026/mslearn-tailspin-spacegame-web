@@ -61,7 +61,7 @@ steps:
 - task: DotNetCoreCLI@2  #NuGetCommand
   displayName: 'Pack nuget'
   inputs:
-    command: msbuild /t:pack
+    command: dotnet pack
     packagesToPack: '**/*.csproj'
 
 - task: PublishBuildArtifacts@1
