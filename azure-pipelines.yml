@@ -8,6 +8,7 @@ variables:
   Minor: '0'
   Patch: '1'
 jobs:
+- job: Windows
   pool:
    name: My_agent_pool
    demands:
