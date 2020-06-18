@@ -5,7 +5,7 @@ pool:
   name: 'My_agent_pool'
   demands:
     - npm
-    - Agent.Name -equals sandesh_laptop
+    - Agent.Name -equals winlocal
 
 variables:
   buildConfiguration: 'Release'
@@ -63,7 +63,7 @@ steps:
   inputs:
     command: pack
     packagesToPack: '**/*.csproj'
-    versioningScheme: byPrereleaseNumber
+    versioningScheme: 'on'
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'
@@ -84,8 +84,8 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'Sandesh2026/gbj-artifacts'
-    #versioningScheme: 'on'
-    versioningScheme: byPrereleaseNumber
+    versioningScheme: 'on'
+    #versioningScheme: byPrereleaseNumber
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'
