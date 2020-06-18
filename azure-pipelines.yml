@@ -1,10 +1,11 @@
 trigger:
-- '*'
+- gbjdeploy
 
 pool:
-  vmImage: 'ubuntu-16.04'
+  name: 'My_agent_pool'
   demands:
     - npm
+    - Agent.Name -equals winlocal
 
 variables:
   buildConfiguration: 'Release'
@@ -25,8 +26,8 @@ steps:
 - script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
   displayName: 'Compile Sass assets'
 
-- task: gulp@1
-  displayName: 'Run gulp tasks'
+#- task: gulp@1
+#  displayName: 'Run gulp tasks'
 
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
   displayName: 'Write build info'
@@ -54,7 +55,7 @@ steps:
     arguments: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
     zipAfterPublish: true
     
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   displayName: 'Pack nuget'
   inputs:
     command: pack
@@ -62,14 +63,18 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
-  condition: succeeded()
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+    condition: succeeded()
 - task: NuGetCommand@2
   displayName: 'nuget push'
   inputs:
     command: 'push'
     #feedsToUse: 'select'
-    packagesToPush: '/home/vsts/work/1/a/Tailspin.SpaceGame.Web.1.0.0.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: 'Sandesh2026/azure-artifacts'
+    publishVstsFeed: 'Sandesh2026/gbj-artifacts'
     versioningScheme: 'off'
     allowPackageConflicts: true
