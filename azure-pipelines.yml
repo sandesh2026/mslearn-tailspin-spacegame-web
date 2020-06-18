@@ -5,7 +5,7 @@ pool:
   name: 'My_agent_pool'
   demands:
     - npm
-    - Agent.Name -equals winlocal
+    - Agent.Name -equals sandesh_laptop
 
 variables:
   buildConfiguration: 'Release'
@@ -63,7 +63,12 @@ steps:
   inputs:
     command: pack
     packagesToPack: '**/*.csproj'
-
+    versioningScheme: byPrereleaseNumber
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'
+    allowPackageConflicts: true
+    
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   inputs:
