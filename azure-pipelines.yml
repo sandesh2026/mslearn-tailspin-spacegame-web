@@ -11,9 +11,9 @@ variables:
   buildConfiguration: 'Release'
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
   dotnetSdkVersion: '3.1.100'
-  Major: '2'
-  Minor: '2'
-  Patch: '$(Build.BuildNumber)'
+  #Major: '2'
+  #Minor: '2'
+  #Patch: '$(Build.BuildNumber)'
 
 steps:
 - task: UseDotNet@2
@@ -63,10 +63,10 @@ steps:
   inputs:
     command: pack
     packagesToPack: '**/*.csproj'
-    versioningScheme: byPrereleaseNumber
-    majorVersion: '$(Major)'
-    minorVersion: '$(Minor)'
-    patchVersion: '$(Patch)'
+    versioningScheme: byBuildNumber
+    #majorVersion: '$(Major)'
+    #minorVersion: '$(Minor)'
+    #patchVersion: '$(Patch)'
     allowPackageConflicts: true
     
 - task: PublishBuildArtifacts@1
