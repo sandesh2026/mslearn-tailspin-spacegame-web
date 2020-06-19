@@ -64,6 +64,7 @@ steps:
     command: pack
     packagesToPack: '**/*.csproj'
     versioningScheme: byBuildNumber
+    name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
     #majorVersion: '$(Major)'
     #minorVersion: '$(Minor)'
     #patchVersion: '$(Patch)'
