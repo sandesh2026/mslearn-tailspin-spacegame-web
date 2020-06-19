@@ -13,7 +13,7 @@ variables:
   dotnetSdkVersion: '3.1.100'
   Major: '2'
   Minor: '2'
-  #Patch: '3'
+  Patch: '$(Build.BuildNumber)'
 
 steps:
 - task: UseDotNet@2
@@ -66,7 +66,7 @@ steps:
     versioningScheme: byPrereleaseNumber
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
-    patchVersion: '$(System.DefinitionId)'
+    patchVersion: '$(Patch)'
     allowPackageConflicts: true
     
 - task: PublishBuildArtifacts@1
