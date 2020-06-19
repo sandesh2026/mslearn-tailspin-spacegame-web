@@ -11,7 +11,7 @@ variables:
   buildConfiguration: 'Release'
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
   dotnetSdkVersion: '3.1.100'
-  Version.MajorMinor: '5.0'
+  #Version.MajorMinor: '5.0'
   #EnvVar: '$(Build.BuildNumber)'
   #Major: '2'
   #Minor: '2'
@@ -67,7 +67,9 @@ steps:
     packagesToPack: '**/*.csproj'
     versioningScheme: byEnvVar
     #versionEnvVar: Build.BuildNumber
-    Version.Revision: $[counter(variables['Version.MajorMinor'], 0)]
+    variables:
+      Version.MajorMinor: '1.0'
+      Version.Revision: $[counter(variables['Version.MajorMinor'], 0)]
     #majorVersion: '$(Major)'
     #minorVersion: '$(Minor)'
     #patchVersion: '$(Patch)'
