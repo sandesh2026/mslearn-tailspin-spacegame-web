@@ -66,9 +66,9 @@ steps:
     packagesToPack: '**/*.csproj'
     versioningScheme: byEnvVar
     #versionEnvVar: Build.BuildNumber
-    variables:
-      Version.MajorMinor: 5.0
-      Version.Revision: $[counter(variables['Version.MajorMinor'], 0)]
+      variables:
+        Version.MajorMinor: 5.0
+        Version.Revision: $[counter(variables['Version.MajorMinor'], 0)]
     #majorVersion: '$(Major)'
     #minorVersion: '$(Minor)'
     #patchVersion: '$(Patch)'
