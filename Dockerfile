@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/dotnet/core/sdk AS build-env
-WORKDIR ./
+WORKDIR /appdir
 EXPOSE 80
 EXPOSE 443
 
@@ -14,6 +14,6 @@ RUN dotnet publish ./*.csproj -c Release -o out
 
 # Build the runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet
-WORKDIR ./
-COPY --from=build-env ./out .
+WORKDIR /appdir
+COPY --from=build-env appdir/out .
 ENTRYPOINT ["dotnet", "web.dll"]
