@@ -7,7 +7,7 @@ EXPOSE 443
 COPY *.csproj /appdir
 COPY . .
 #COPY *CloudDevBoilerPlate.* ./
-RUN dotnet restore /appdir/*.csproj
+RUN dotnet restore /appdir/Tailspin.SpaceGame.Web.csproj
 
 # Copy .NET Core Web App. Release packs the application and its dependencies into a folder for deployment to a hosting system
 COPY * ./
