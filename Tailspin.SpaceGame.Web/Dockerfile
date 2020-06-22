@@ -5,6 +5,7 @@ EXPOSE 443
 
 # Copy csproj and restore as distinct layers
 COPY *.csproj /appdir
+COPY . .
 #COPY *CloudDevBoilerPlate.* ./
 RUN dotnet restore /appdir/*.csproj
 
