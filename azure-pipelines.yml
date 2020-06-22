@@ -101,4 +101,4 @@ steps:
   inputs:
     repository: $(imageName)
     command: build
-    Dockerfile: Tailspin.SpaceGame.Web/Dockerfile
+    Dockerfile: .
