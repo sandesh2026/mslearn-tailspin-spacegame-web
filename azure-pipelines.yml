@@ -96,3 +96,9 @@ steps:
     #minorVersion: '$(Minor)'
     #patchVersion: '$(Patch)'
     allowPackageConflicts: true
+- task: Docker@2
+  displayName: Build an image
+  inputs:
+    repository: $(imageName)
+    command: build
+    Dockerfile: Tailspin.SpaceGame.Web/Dockerfile
