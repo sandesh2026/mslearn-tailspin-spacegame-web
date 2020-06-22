@@ -6,7 +6,7 @@ EXPOSE 443
 # Copy csproj and restore as distinct layers
 COPY *.csproj /appdir
 #COPY *CloudDevBoilerPlate.* ./
-RUN dotnet restore *.csproj
+RUN dotnet restore /appdir/*.csproj
 
 # Copy .NET Core Web App. Release packs the application and its dependencies into a folder for deployment to a hosting system
 COPY * ./
