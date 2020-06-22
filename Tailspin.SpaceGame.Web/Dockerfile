@@ -1,13 +1,13 @@
 FROM mcr.microsoft.com/dotnet/core/sdk AS build-env
-WORKDIR ./
+WORKDIR /appdir
 EXPOSE 80
 EXPOSE 443
 
 # Copy csproj and restore as distinct layers
 COPY *.csproj /appdir
-COPY . .
+COPY *Tailspin.SpaceGame.Web.* /appdir/
 #COPY *CloudDevBoilerPlate.* ./
-RUN dotnet restore /appdir/Tailspin.SpaceGame.Web.csproj
+RUN dotnet restore ./*.csproj
 
 # Copy .NET Core Web App. Release packs the application and its dependencies into a folder for deployment to a hosting system
 COPY * ./
