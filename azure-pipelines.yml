@@ -66,10 +66,10 @@ steps:
     command: pack
     packagesToPack: '**/*.csproj'
     versioningScheme: byEnvVar
-    #versionEnvVar: Build.BuildNumber
-    variables:
-      Version.MajorMinor: '1.0'
-      Version.Revision: $[counter(variables['Version.MajorMinor'], 0)]
+    versionEnvVar: Build.BuildNumber
+    #variables:
+      #Version.MajorMinor: '1.0'
+      #Version.Revision: $[counter(variables['Version.MajorMinor'], 0)]
     #majorVersion: '$(Major)'
     #minorVersion: '$(Minor)'
     #patchVersion: '$(Patch)'
