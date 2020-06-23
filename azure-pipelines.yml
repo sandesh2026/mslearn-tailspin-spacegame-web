@@ -1,8 +1,8 @@
 trigger:
-- acrimage
+- gbjdeploy
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
   #name: 'My_agent_pool'
   #demands:
   #  - npm
