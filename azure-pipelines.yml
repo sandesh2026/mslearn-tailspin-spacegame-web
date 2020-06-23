@@ -2,7 +2,7 @@ trigger:
 - acrimage
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
   #name: 'My_agent_pool'
   #demands:
   #  - npm
