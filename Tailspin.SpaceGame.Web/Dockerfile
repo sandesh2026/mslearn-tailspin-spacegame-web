@@ -27,5 +27,5 @@ RUN dotnet publish -c Release
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
-COPY --from=build-env /app/out .
-# ENTRYPOINT ["dotnet", "Tailspin.SpaceGame.Web.dll"]
+COPY /app/out .
+ENTRYPOINT ["dotnet", "Tailspin.SpaceGame.Web.dll"]
