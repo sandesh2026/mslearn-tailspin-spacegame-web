@@ -1,5 +1,5 @@
 trigger:
-- gbjdeploy
+- acrimage
 
 pool:
   vmImage: 'windows-latest'
