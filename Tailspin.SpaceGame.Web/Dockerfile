@@ -16,7 +16,7 @@
 # WORKDIR /app
 
 # Copy csproj and restore as distinct layers
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1
 COPY *.csproj ./
 RUN dotnet restore ./Tailspin.SpaceGame.Web.csproj 
 
