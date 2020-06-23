@@ -2,10 +2,11 @@ trigger:
 - gbjdeploy
 
 pool:
-  name: 'My_agent_pool'
-  demands:
-    - npm
-    - Agent.Name -equals winlocal
+  vmImage: 'windows-latest'
+  #name: 'My_agent_pool'
+  #demands:
+  #  - npm
+  #  - Agent.Name -equals winlocal
 
 variables:
   buildConfiguration: 'Release'
