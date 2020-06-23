@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk as build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 as build-env
 
 WORKDIR /app
 COPY . /app
