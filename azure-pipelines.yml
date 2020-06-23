@@ -113,3 +113,10 @@ steps:
     command: build
     repository: azurerepository
     tags: tag1
+- task: Docker@2
+  displayName: Push image
+  inputs:
+    containerRegistry: AzureContainerRegistry
+    repository: azurerepository
+    command: push
+    tags: tag1
