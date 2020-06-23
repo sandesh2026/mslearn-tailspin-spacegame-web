@@ -1,6 +1,6 @@
 <Project>
  <PropertyGroup>
-   <OutputPath>$(SolutionDir)artifacts\bin\$(Configuration)\$(MSBuildProjectName)\</OutputPath>
+   <MSBuildProjectExtensionsPath>/app/out</MSBuildProjectExtensionsPath>
    <Deterministic>true</Deterministic>
  </PropertyGroup>
 </Project>
