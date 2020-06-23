@@ -1,4 +1,4 @@
-FROM microsoft/dotnet-framework-build:4.7.1 as build-env
+FROM mcr.microsoft.com/dotnet/core/sdk AS build-env
 
 WORKDIR /app
 COPY . /app
