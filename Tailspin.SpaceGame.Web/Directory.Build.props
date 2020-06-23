@@ -1,6 +1,6 @@
 <Project>
- <Import Project="../Directory.Build.props" />
  <PropertyGroup>
+   <OutputPath>$(SolutionDir)artifacts\bin\$(Configuration)\$(MSBuildProjectName)\</OutputPath>
    <Deterministic>true</Deterministic>
  </PropertyGroup>
 </Project>
