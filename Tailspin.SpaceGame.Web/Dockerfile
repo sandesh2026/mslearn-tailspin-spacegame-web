@@ -1,8 +1,9 @@
-FROM mcr.microsoft.com/dotnet/core/sdk AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk as build-env
 
 WORKDIR /app
 COPY . /app
-RUN dotnet restore Tailspin.SpaceGame.Web.csproj -SolutionDirectory ../ -Verbosity normal  
+RUN dotnet restore Tailspin.SpaceGame.Web.csproj 
+#-SolutionDirectory ../ -Verbosity normal  
 #--isolation=hyperv
 RUN MSBuild.exe Tailspin.SpaceGame.Web.csproj /t:build /p:Configuration=Release /p:OutputPath=./out  
 #--isolation=hyperv
