@@ -18,7 +18,7 @@
 # Copy csproj and restore as distinct layers
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 COPY *.csproj ./
-RUN dotnet restore
+RUN dotnet restore ./Tailspin.SpaceGame.Web.csproj 
 
 # Copy everything else and build
 COPY . ./
@@ -28,4 +28,4 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "Tailspin.SpaceGame.Web.dll"]
+# ENTRYPOINT ["dotnet", "Tailspin.SpaceGame.Web.dll"]
