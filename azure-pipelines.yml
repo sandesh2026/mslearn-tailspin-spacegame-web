@@ -120,3 +120,13 @@ steps:
     repository: azurerepository
     command: push
     tags: tag1
+    
+   steps:
+- task: KubernetesManifest@0
+  displayName: Deploy
+  inputs:
+    kubernetesServiceConnection: MyAKS
+    namespace: default
+    manifests: manifests/deployment.yml|manifests/service.yml
+    containers: AzureContainerRegistry/azurerepository:tag1
+
