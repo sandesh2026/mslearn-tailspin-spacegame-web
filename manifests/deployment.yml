@@ -1,16 +1,16 @@
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: "myaks-df30"
+  name: "azurerepository"
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
-        app: "myaks-df30"
+        app: "azurerepository"
     spec:
       containers:
-        - name: "myaks-df30"
-          image: "myakr.azurecr.io/myaks"
+        - name: "azurerepository"
+          image: "AzureContainerRegistry/azurerepository"
           ports:
           - containerPort: 80
