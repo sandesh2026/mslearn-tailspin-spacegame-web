@@ -1,0 +1,50 @@
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    
+    - uses: azure/docker-login@v1
+      with:
+        login-server: myakr.azurecr.io
+        username: ${{ secrets.acr_myakr_username }}
+        password: ${{ secrets.acr_myakr_password }}
+    
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
+        docker build "$GITHUB_WORKSPACE/Tailspin.SpaceGame.Web" -f  "Tailspin.SpaceGame.Web/Dockerfile" -t myakr.azurecr.io/myaks:${{ github.sha }}
+        docker push myakr.azurecr.io/myaks:${{ github.sha }}
+    
+    - uses: azure/k8s-set-context@v1
+      with:
+         kubeconfig: ${{ secrets.aks_myaks_kubeConfig }}
+      id: login
+    
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep myaks5bb8 | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace myaks5bb8`
+        fi
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: myaks5bb8
+        container-registry-url: myakr.azurecr.io
+        container-registry-username: ${{ secrets.acr_myakr_username }}
+        container-registry-password: ${{ secrets.acr_myakr_password }}
+        secret-name: myaksdockerauth
+       
+    - uses: azure/k8s-deploy@v1
+      with:
+        namespace: myaks5bb8
+        manifests: |
+          manifests/deployment.yml
+          manifests/service.yml
+        images: |
+          myakr.azurecr.io/myaks:${{ github.sha }}
+        imagepullsecrets: |
+          myaksdockerauth
