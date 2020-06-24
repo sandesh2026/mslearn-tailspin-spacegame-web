@@ -126,6 +126,8 @@ steps:
   inputs:
     kubernetesServiceConnection: MyAKS
     namespace: default
-    manifests: **/deployment.yml|**/service.yml
+    manifests: |
+     */deployment.yml
+     */service.yml
     containers: AzureContainerRegistry/azurerepository:tag1
 
