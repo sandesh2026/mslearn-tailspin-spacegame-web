@@ -121,7 +121,6 @@ steps:
     command: push
     tags: tag1
     
-   steps:
 - task: KubernetesManifest@0
   displayName: Deploy
   inputs:
