@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: "myaks-df30"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "myaks-df30"
+    spec:
+      containers:
+        - name: "myaks-df30"
+          image: "myakr.azurecr.io/myaks"
+          ports:
+          - containerPort: 80
