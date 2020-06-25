@@ -89,7 +89,7 @@ steps:
     #feedsToUse: 'select'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: 'Sandesh2026/gbj-artifacts'
+    publishVstsFeed: 'Sandesh2026/local-artifacts'
     #versioningScheme: 'on'
     #versioningScheme: byPrereleaseNumber
     #majorVersion: '$(Major)'
