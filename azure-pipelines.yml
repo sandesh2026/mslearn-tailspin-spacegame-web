@@ -121,13 +121,42 @@ steps:
     command: push
     tags: tag1
     
-- task: KubernetesManifest@0
-  displayName: Deploy
+- task: Kubernetes@1
+  displayName: apply
   inputs:
-    kubernetesServiceConnection: MyAKS
-    namespace: default
-    manifests: |
-     */deployment.yml
-     */service.yml
-    containers: AzureContainerRegistry/azurerepository:tag1
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceConnection: 'MyAKS'
+    namespace: 'default'
+    arguements: '-f manifests/deployment.yml'
+    #manifests: |
+    # */deployment.yml
+    # */service.yml
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
+    outputFormat: "jsonpath={$.metadata.name}"
+    #containers: AzureContainerRegistry/azurerepository:tag1
+
+- task: Kubernetes@1
+    name: rollout_status
+    inputs:
+      connectionType: 'Kubernetes Service Connection'
+      kubernetesServiceEndpoint: 'MyAkS'
+      namespace: 'default'
+      command: rollout
+      arguments: status deployment/$(apply.KubectlOutput)
+      secretType: 'dockerRegistry'
+      containerRegistryType: 'Azure Container Registry'
+ 
+ - task: Kubernetes@1
+    name: rollout_undo
+    # conditional execution
+    condition: failed()
+    inputs:
+      connectionType: 'Kubernetes Service Connection'
+      kubernetesServiceEndpoint: 'MyAKS'
+      namespace: 'default'
+      command: rollout
+      arguments: undo deployment/$(apply.KubectlOutput)
+      secretType: 'dockerRegistry'
+      containerRegistryType: 'Azure Container Registry'
 
