@@ -128,7 +128,7 @@ steps:
     kubernetesServiceEndpoint: 'MyAKS'
     namespace: 'default'
     command: 'apply'
-    arguements: '-f manifests/deployment.yml'
+    arguments: '-f manifests/deployment.yml'
     #manifests: |
     # */deployment.yml
     # */service.yml
