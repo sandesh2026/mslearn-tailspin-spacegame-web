@@ -137,26 +137,26 @@ steps:
     #containers: AzureContainerRegistry/azurerepository:tag1
 
 - task: Kubernetes@1
-    name: rollout_status
-    inputs:
-      connectionType: 'Kubernetes Service Connection'
-      kubernetesServiceEndpoint: 'MyAkS'
-      namespace: 'default'
-      command: rollout
-      arguments: status deployment/$(apply.KubectlOutput)
-      secretType: 'dockerRegistry'
-      containerRegistryType: 'Azure Container Registry'
+  displayName: rollout_status
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'MyAkS'
+    namespace: 'default'
+    command: rollout
+    arguments: status deployment/$(apply.KubectlOutput)
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
  
  - task: Kubernetes@1
-    name: rollout_undo
+   displayName: rollout_undo
     # conditional execution
-    condition: failed()
-    inputs:
-      connectionType: 'Kubernetes Service Connection'
-      kubernetesServiceEndpoint: 'MyAKS'
-      namespace: 'default'
-      command: rollout
-      arguments: undo deployment/$(apply.KubectlOutput)
-      secretType: 'dockerRegistry'
-      containerRegistryType: 'Azure Container Registry'
+   condition: failed()
+   inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'MyAKS'
+    namespace: 'default'
+    command: rollout
+    arguments: undo deployment/$(apply.KubectlOutput)
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
 
