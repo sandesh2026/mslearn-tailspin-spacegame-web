@@ -122,17 +122,17 @@ steps:
     tags: tag1
     
 - task: Kubernetes@1
-  displayName: apply
+  displayName: deploy
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'MyAKS'
     namespace: 'default'
-    command: 'apply'
-    arguments: '-f manifests/deployment.yml'
-    #manifests: |
-    # */deployment.yml
-    # */service.yml
-    secretType: 'dockerRegistry'
+    command: 'deploy'
+    #arguments: '-f manifests/deployment.yml'
+    manifests: |
+     */deployment.yml
+     */service.yml
+    #secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
     outputFormat: "jsonpath={$.metadata.name}"
     #containers: AzureContainerRegistry/azurerepository:tag1
