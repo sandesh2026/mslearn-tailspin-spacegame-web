@@ -1,16 +1,25 @@
-apiVersion : apps/v1beta1
+apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: "azurerepository"
+  name: hello-azurerepository
 spec:
   replicas: 1
+  progressDeadlineSeconds: 120
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: hello-azurerepository
   template:
     metadata:
       labels:
-        app: "azurerepository"
+        app: hello-azurerepository
     spec:
       containers:
-        - name: "azurerepository"
-          image: "AzureContainerRegistry/azurerepository"
+        - name: hello-azurerepository
+          image: AzureContainerRegistry/azurerepository:tag1
           ports:
           - containerPort: 80
