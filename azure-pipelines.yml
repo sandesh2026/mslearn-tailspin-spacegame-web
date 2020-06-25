@@ -129,5 +129,5 @@ steps:
     manifests: |
      */deployment.yml
      */service.yml
-    containers: AzureContainerRegistry/azurerepository:tag1
+    containers: myakr.azurecr.io/azurerepository:tag1
 
