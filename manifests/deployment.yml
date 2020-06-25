@@ -4,6 +4,8 @@ metadata:
   name: "azureapp"
 spec:
   progressDeadlineSeconds: 120
+  strategy:
+    type: canary
   #replicas: 1
   template:
     metadata:
