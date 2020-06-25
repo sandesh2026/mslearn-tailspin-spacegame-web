@@ -125,7 +125,7 @@ steps:
   displayName: apply
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceConnection: 'MyAKS'
+    kubernetesServiceEndpoint: 'MyAKS'
     namespace: 'default'
     command: 'apply'
     arguements: '-f manifests/deployment.yml'
