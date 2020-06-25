@@ -1,16 +1,16 @@
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: "azurerepository"
+  name: "azureapp"
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: "azurerepository"
+        app: "azureapp"
     spec:
       containers:
-        - name: "azurerepository"
-          image: "AzureContainerRegistry/azurerepository"
+        - name: "azureapp"
+          image: "myakr.azurecr.io/azurerepository:tag1"
           ports:
           - containerPort: 80
