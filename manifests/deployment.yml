@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
         - name: hello-azurerepository
-          image: AzureContainerRegistry/azurerepository:tag1
+          image: myakr.azurecr.io/azurerepository:tag1
           ports:
           - containerPort: 80
