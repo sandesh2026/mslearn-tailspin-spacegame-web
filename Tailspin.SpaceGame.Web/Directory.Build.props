@@ -1,6 +1,0 @@
-<Project>
- <PropertyGroup>
-   <MSBuildProjectExtensionsPath>/app/out</MSBuildProjectExtensionsPath>
-   <Deterministic>true</Deterministic>
- </PropertyGroup>
-</Project>
