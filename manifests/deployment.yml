@@ -5,7 +5,7 @@ metadata:
 spec:
   progressDeadlineSeconds: 120
   strategy:
-    type: canary
+    type: Recreate
   #replicas: 1
   selector:
     matchLabels:
