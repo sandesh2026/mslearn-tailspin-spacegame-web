@@ -126,7 +126,7 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'azurekubeservice'
-    namespace: 'default'
+    namespace: 'gaks'
     command: 'apply'
     arguments: '-f manifests/deployment.yml'
     #manifests: |
@@ -142,7 +142,7 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'azurekubeservice'
-    namespace: 'default'
+    namespace: 'gaks'
     command: 'rollout'
     arguments: status deployment/azurerepository   #$(apply.KubectlOutput)
     secretType: 'dockerRegistry'
@@ -155,7 +155,7 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'azurekubeservice'
-    namespace: 'default'
+    namespace: 'gaks'
     command: 'rollout'
     arguments: undo deployment/azurerepository
     secretType: 'dockerRegistry'
