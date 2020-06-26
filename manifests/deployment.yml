@@ -6,7 +6,7 @@ spec:
   replicas: 1
   progressDeadlineSeconds: 120
   strategy:
-    type: recreate
+    type: Recreate
     rollingUpdate:
       maxUnavailable: 0
       maxSurge: 1
