@@ -141,7 +141,7 @@ steps:
   displayName: rollout_status
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'MyAkS'
+    kubernetesServiceEndpoint: 'azurekubeservice'
     namespace: 'default'
     command: 'rollout'
     arguments: status deployment/$(apply.KubectlOutput)
