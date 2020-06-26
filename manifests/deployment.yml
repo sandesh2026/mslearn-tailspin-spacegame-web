@@ -1,9 +1,9 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: "azureapp"
+  name: azureapp
 spec:
-  progressDeadlineSeconds: 120
+  progressDeadlineSeconds: 300
   strategy:
     type: Recreate
   #replicas: 1
