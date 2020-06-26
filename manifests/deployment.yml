@@ -38,10 +38,10 @@ spec:
         "beta.kubernetes.io/os": windows
       containers:
       - name: azurerepository
-        image: azurerepository:tag1
+        image: azurerepository
         ports:
         - containerPort: 80 
-          name: azurerepository:tag1
+          name: azurerepository
 ---
 apiVersion: v1
 kind: Service
