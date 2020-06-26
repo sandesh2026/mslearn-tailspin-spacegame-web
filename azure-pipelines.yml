@@ -144,7 +144,7 @@ steps:
     kubernetesServiceEndpoint: 'azurekubeservice'
     namespace: 'default'
     command: 'rollout'
-    arguments: status deployment/$(apply.KubectlOutput)
+    arguments: status deployment/azurerepository   #$(apply.KubectlOutput)
     secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
     
@@ -157,7 +157,7 @@ steps:
     kubernetesServiceEndpoint: 'azurekubeservice'
     namespace: 'default'
     command: 'rollout'
-    arguments: undo deployment/$(apply.KubectlOutput)
+    arguments: undo deployment/azurerepository
     secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
 
