@@ -20,38 +20,38 @@
 #          image: "myakr.azurecr.io/azurerepository:tag1"
 #          ports:
 #          - containerPort: 80
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azurerepository
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azurerepository
-  template:
-    metadata:
-      labels:
-        app: azurerepository
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": windows
-      containers:
-      - name: azurerepository
-        image: azurerepository
-        ports:
-        - containerPort: 80 
-          name: azurerepository
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: azurerepository
-spec:
-  ports:
-  - port: 80
-  selector:
-    app: azurerepository
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: azurerepository
+#spec:
+#  replicas: 1
+#  selector:
+#    matchLabels:
+#      app: azurerepository
+#  template:
+#    metadata:
+#      labels:
+#        app: azurerepository
+#    spec:
+#      nodeSelector:
+#        "beta.kubernetes.io/os": windows
+#      containers:
+#      - name: azurerepository
+#        image: azurerepository
+#        ports:
+#        - containerPort: 80 
+#          name: azurerepository
+# ---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: azurerepository
+#spec:
+#  ports:
+#  - port: 80
+#  selector:
+#    app: azurerepository
 ---
 apiVersion: apps/v1
 kind: Deployment
