@@ -6,7 +6,7 @@ spec:
   replicas: 1
   progressDeadlineSeconds: 120
   strategy:
-    type: canary
+    type: recreate
     rollingUpdate:
       maxUnavailable: 0
       maxSurge: 1
