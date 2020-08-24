@@ -100,7 +100,7 @@ steps:
   displayName: Login to ACR
   inputs:
     command: login
-    containerRegistry: AzureContainerRegistry
+    containerRegistry: MyACR
 - task: DeleteFiles@1
   displayName: 'Remove unneeded files'
   inputs:
@@ -112,11 +112,11 @@ steps:
   inputs:
     command: build
     repository: azurerepository
-    tags: tag1
+    tags: tag1.1
 - task: Docker@2
   displayName: Push image
   inputs:
-    containerRegistry: AzureContainerRegistry
+    containerRegistry: MyACR
     repository: azurerepository
     command: push
-    tags: tag1
+    tags: tag1.1
