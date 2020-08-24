@@ -1,5 +1,5 @@
 trigger:
-- acrimage
+- Successful-ACR-image
 
 pool:
   vmImage: 'windows-latest'
